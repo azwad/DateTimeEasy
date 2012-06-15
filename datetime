@@ -1,0 +1,40 @@
+#! /usr/bin/perl 
+
+use strict;
+use warnings;
+use feature 'say';
+use DateTimeEasy qw (datestr);
+
+my $ltime = localtime;
+say $ltime;
+
+my @t = (
+				 "Feb 2 2012 12:10:23",
+					$ltime,
+					"now",
+					"+3:47",
+					"-10 business days",
+					"next monday",
+					"last saturday",
+					"-3 days",
+			);
+
+
+foreach my $var (@t){
+	say $var;
+	say "format 'HTTP'     "  . datestr($var,'HTTP');
+	say "format 'Mail'     "  . datestr($var,'Mail');
+	say "format 'SQLite'   "  . datestr($var,'SQLite');
+	say "format 'RFC3501'  "  . datestr($var,'RFC3501');
+	say "format 'RFC3339'  "  . datestr($var,'RFC3339');
+	say "format 'W3CDTF'   "  . datestr($var,'W3CDTF');
+	say "format '%c'       "  . datestr($var,'%c');
+	say "format '%x'       "  . datestr($var,'%x');
+	say "format '%X'       "  . datestr($var,'%X');
+	say "format '%Z'       "  . datestr($var,'%Z');
+	say "format '%F'       "  . datestr($var,'%F');
+	say "standard          "  . datestr($var,'standard');
+	say "Instans           "  . datestr($var);
+	say "----------------------------";
+}
+
