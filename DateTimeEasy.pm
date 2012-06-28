@@ -1,6 +1,7 @@
 package DateTimeEasy;
 use strict;
 use warnings;
+use utf8;
 use DateTime::Format::HTTP;
 use DateTime::Format::Mail;
 use DateTime::Format::SQLite;
@@ -18,6 +19,20 @@ our @EXPORT = qw ( datestr );
 sub datestr {
 	croak "usage: datestr(timstr,option). you might be use 'localtime'? " if (@_ >2) ;
 	my ($time_strings, $output_option) = @_;
+	if ($time_strings =~ /(年|月|日)/ ){
+		$time_strings =~ /(\d+)\D+(\d+)\D+(\d+)\D+/;
+		$time_strings = sprintf ("%04d-%02d-%02d", $1,$2,$3);
+	}elsif($time_strings =~ /^\d+\D+\d+\D+\d+/ ){
+		$time_strings =~ /(\d+)\D+(\d+)\D+(\d+)/;
+		my ($a,$b,$c);
+		$a = $b = $c = '%02d';
+		$1>100 ? $a = '%04d':
+		$2>100 ? $b = '%04d':
+		$3>100 ? $c = '%04d':
+		undef;
+		$time_strings = sprintf ("$a-$b-$c", $1,$2,$3);
+	}
+
 	
 	my ($year, $month, $day, $hour, $minute, $second ) = 
 	 UnixDate( $time_strings, '%Y', '%m', '%d', '%H', '%M', '%S');
