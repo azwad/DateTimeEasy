@@ -31,6 +31,8 @@ sub datestr {
 		$3>100 ? $c = '%04d':
 		undef;
 		$time_strings = sprintf ("$a-$b-$c", $1,$2,$3);
+	}elsif($time_strings =~ s/(\d{4}\D\d{2}\D\d{2}\s\d{2}\D\d{2}\D\d{2})/$1/){
+		$time_strings = $1;
 	}
 
 	
