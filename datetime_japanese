@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use feature 'say';
-#use lib qw ( ./ /home/toshi/perl/lib );
+use lib qw( ./  /home/toshi/perl/lib );
 use DateTimeEasy qw (datestr);
 use Pause qw( pause );
 
@@ -11,19 +11,10 @@ my $ltime = localtime;
 say $ltime;
 
 my @t = (
-				 "Feb 2 2012 12:10:23",
-					$ltime,
-					"now",
-					"+3:47",
-					"-10 business days",
-					"next monday",
-					"last saturday",
-					"-3 days",
-					"2012-07-01",
-					"2010-6-30",
-					"2012年6月28日",
-					"2012年07月10日",
-					"発信時間： 2012/09/29 11:26:24 | チャイナネット |",
+					"2013年1月8日 17時33分54秒",
+					"2013年1月8日 17時33分頃",
+					"2013/1/8 17:34:23",
+					"2013/1/8 17:34",
 			);
 
 
