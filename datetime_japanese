@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use feature 'say';
-use lib qw( ./  /home/toshi/perl/lib );
+#use lib qw( ./  /home/toshi/perl/lib );
 use DateTimeEasy qw (datestr);
 use Pause qw( pause );
 
@@ -32,6 +32,7 @@ foreach my $var (@t){
 	say "format '%Z'       "  . datestr($var,'%Z');
 	say "format '%F'       "  . datestr($var,'%F');
 	say "standard          "  . datestr($var,'standard');
+	say "epoch_sec         "  . datestr($var, 'epoch_sec');
 	say "Instans           "  . datestr($var);
 	say "----------------------------";
 	pause;

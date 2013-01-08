@@ -10,6 +10,7 @@ use DateTime::Format::RFC3339;
 use DateTime::Format::W3CDTF;
 use DateTime;
 use Encode;
+use Time::Local qw( timelocal );
 use Date::Manip qw ( UnixDate);
 use feature 'say';
 use base qw (Exporter);
@@ -88,6 +89,15 @@ sub datestr {
 			return  $_->format_datetime($dt);
 		}elsif (/(str|normal|standard)/) {
 			return  $dt->strftime('%Y/%m/%d %H:%M:%S');
+		}elsif (/epoch_sec/) {
+			my $sec = $dt->second;
+			my $min = $dt->minute;
+			my $hour = $dt->hour;
+			my $mday = $dt->day;
+			my $month = $dt->month - 1;
+			my $year = $dt->year - 1900;
+			my $sec_from_epoch = timelocal( $sec, $min, $hour, $mday, $month, $year );
+			return $sec_from_epoch;
 		}else{
 			return $dt->strftime( $_ );
 		}
