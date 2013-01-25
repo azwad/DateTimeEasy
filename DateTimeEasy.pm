@@ -89,6 +89,15 @@ sub datestr {
 			return  $_->format_datetime($dt);
 		}elsif (/(str|normal|standard)/) {
 			return  $dt->strftime('%Y/%m/%d %H:%M:%S');
+		}elsif (/continus/) {
+			my $sec = $dt->second;
+			my $min = $dt->minute;
+			my $hour = $dt->hour;
+			my $mday = $dt->day;
+			my $month = $dt->month;
+			my $year = $dt->year;
+			my $continus = sprintf("%04s%02s%02s%02s%02s%02s", $year, $month, $mday, $hour, $min, $sec );
+			return $continus;
 		}elsif (/epoch_sec/) {
 			my $sec = $dt->second;
 			my $min = $dt->minute;

@@ -41,6 +41,7 @@ foreach my $var (@t){
 	say "format '%Z'       "  . datestr($var,'%Z');
 	say "format '%F'       "  . datestr($var,'%F');
 	say "standard          "  . datestr($var,'standard');
+	say "continus          "  . datestr($var,'continus');
 	say "epoch_sec         "  . datestr($var,'epoch_sec');
 	say "Instans           "  . datestr($var);
 	say "----------------------------";
